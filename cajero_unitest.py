@@ -52,7 +52,7 @@ class CajeroAutomatico:
 
 class TestCuentaBancaria(unittest.TestCase):
     def setUp(self):
-        self.cuenta = CuentaBancaria("Juan Perez", 1000)
+        self.cuenta = CuentaBancaria("Jose Moscoso", 1000)
 
     def test_consultar_saldo(self):
         self.assertEqual(self.cuenta.consultar_saldo(), 1000)
@@ -68,29 +68,29 @@ class TestCuentaBancaria(unittest.TestCase):
 
 class TestCajeroAutomatico(unittest.TestCase):
     def setUp(self):
-        self.cuenta1 = CuentaBancaria("Juan Perez", 1000)
-        self.cuenta2 = CuentaBancaria("Maria Lopez", 2000)
+        self.cuenta1 = CuentaBancaria("Jose Moscoso", 1000)
+        self.cuenta2 = CuentaBancaria("Ana Ortiz", 2000)
         self.cajero = CajeroAutomatico()
-        self.cajero.agregar_cuenta(self.cuenta1, "1234")
-        self.cajero.agregar_cuenta(self.cuenta2, "5678")
+        self.cajero.agregar_cuenta(self.cuenta1, "9876")
+        self.cajero.agregar_cuenta(self.cuenta2, "0025")
 
     def test_validar_pin_existente(self):
-        self.assertTrue(self.cajero.validar_pin("1234"))
+        self.assertTrue(self.cajero.validar_pin("9876"))
 
     def test_validar_pin_inexistente(self):
         self.assertFalse(self.cajero.validar_pin("0000"))
 
     def test_consultar_saldo(self):
-        self.assertEqual(self.cajero.consultar_saldo("1234"), 1000)
+        self.assertEqual(self.cajero.consultar_saldo("9876"), 1000)
 
     def test_realizar_deposito(self):
-        self.assertEqual(self.cajero.realizar_deposito("1234", 500), 1500)
+        self.assertEqual(self.cajero.realizar_deposito("9876", 500), 1500)
 
     def test_realizar_retiro_suficiente(self):
-        self.assertEqual(self.cajero.realizar_retiro("1234", 500), 500)
+        self.assertEqual(self.cajero.realizar_retiro("9876", 500), 500)
 
     def test_realizar_retiro_insuficiente(self):
-        self.assertEqual(self.cajero.realizar_retiro("1234", 2000), "Saldo insuficiente")
+        self.assertEqual(self.cajero.realizar_retiro("9876", 2000), "Saldo insuficiente")
 
 if __name__ == '__main__':
     unittest.main()
