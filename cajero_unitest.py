@@ -84,13 +84,13 @@ class TestCajeroAutomatico(unittest.TestCase):
         self.assertEqual(self.cajero.consultar_saldo("9876"), 1000)
 
     def test_realizar_deposito(self):
-        self.assertEqual(self.cajero.realizar_deposito("9876", 500), 1500)
+        self.assertEqual(self.cajero.realizar_deposito("9876", 325), 1325)
 
     def test_realizar_retiro_suficiente(self):
-        self.assertEqual(self.cajero.realizar_retiro("9876", 500), 500)
+        self.assertEqual(self.cajero.realizar_retiro("9876", 700), 300)
 
     def test_realizar_retiro_insuficiente(self):
-        self.assertEqual(self.cajero.realizar_retiro("9876", 2000), "Saldo insuficiente")
+        self.assertEqual(self.cajero.realizar_retiro("9876", 3000), "Saldo insuficiente")
 
 if __name__ == '__main__':
     unittest.main()
